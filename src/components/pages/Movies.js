@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation, useSearchParams } from "react-router-dom";
 import { searchMovies } from '../API';
-import { Input, Button, LinkSearch } from '../pages/Movies.styled'
+import { Form, Input, Button, LinkSearch } from '../pages/Movies.styled'
 
 const Movie = () => {
   const [movies, setMovies] = useState([]); //фільми що прийшли по запиту
@@ -41,7 +41,7 @@ const Movie = () => {
   return (
     <div>
 
-      <form onSubmit={updateQueryString} >
+      <Form onSubmit={updateQueryString} >
         <Input
           type="text"
           placeholder="Search movies"
@@ -50,7 +50,7 @@ const Movie = () => {
           id="searchbar"
         />
         <Button type="submit"> Search </Button>
-      </form>
+      </Form>
 
       {movies?.map(movie => (
           <ul key={movie.id}>

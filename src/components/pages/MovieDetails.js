@@ -1,6 +1,7 @@
 import { Suspense, useRef, useEffect, useState } from "react";
-import { Link, Outlet, useLocation, useParams } from "react-router-dom";
+import { Outlet, useLocation, useParams } from "react-router-dom";
 import { detailsMovies } from '../API';
+import { LinkBack, Section, TitleMovie, TitleDetails, TextDetails, LinkDetails } from '../pages/MovieDetails.styled';
 
 const MovieDetails = () => {
   const [movieDetal, setMovieDetal] = useState([]); //додаткова інформація про фільм по id
@@ -24,27 +25,27 @@ const MovieDetails = () => {
     
 
     <div>
-      <Link to={backLinkLocationRef.current}>Go back</Link>
+      <LinkBack to={backLinkLocationRef.current}>Go back</LinkBack>
 
-      <div>
+      <Section>
         <img onError={()=>{}} src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt='poster movie'></img>
         <div>
-          <h2>{title} </h2>
-          <p>User Score: {Math.round(vote_average * 10)}&#37;</p>
-          <h3>Overview:</h3>
-          <p>{overview}</p>
-          <h3>Genres:</h3>
-          <p>{genres.map(genre => genre.name).join(', ')}</p>
+          <TitleMovie>{title} </TitleMovie>
+          <TextDetails>User Score: {Math.round(vote_average * 10)}&#37;</TextDetails>
+          <TitleDetails>Overview:</TitleDetails>
+          <TextDetails>{overview}</TextDetails>
+          <TitleDetails>Genres:</TitleDetails>
+          <TextDetails>{genres.map(genre => genre.name).join(', ')}</TextDetails>
         </div>
-      </div>
+      </Section>
 
-      <p>Additional information</p>
+      <TextDetails>Additional information</TextDetails>
       <ul>
         <li>
-          <Link to='cast'>Cast</Link>
+          <LinkDetails to='cast'>Cast</LinkDetails>
         </li>
         <li>
-          <Link to='reviews'>Reviews</Link>
+          <LinkDetails to='reviews'>Reviews</LinkDetails>
         </li>
       </ul>
 

@@ -8,4 +8,11 @@ export const MovieLink = styled(Link)`
   line-height: 1.8;
   text-decoration: underline;
   text-decoration-color: blue;
-`
+`;
+
+export const Title = styled.h2`
+  font-family:sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: #262626;
+`;
